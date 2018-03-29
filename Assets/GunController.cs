@@ -6,6 +6,9 @@ public class GunController : MonoBehaviour {
 
 	public bool isFiring;
 
+	public float damage = 10f;
+	public float range = 100f;
+
 	public BulletController bullet;
 	public float bulletSpeed;
 
@@ -21,6 +24,12 @@ public class GunController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetButtonDown("Fire1")) {
+			Shoot();
+		}else {
+			isFiring = false;
+		}
+
 		if(isFiring) {
 			shotCounter -= Time.deltaTime;
 			if(shotCounter <= 0) {
@@ -31,5 +40,12 @@ public class GunController : MonoBehaviour {
 		}else {
 			shotCounter = 0;
 		}
+		
+	}
+	
+	void Shoot() {
+		isFiring = true;
 	}
 }
+
+
